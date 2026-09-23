@@ -6,8 +6,15 @@ export default function Etiquetas(){
 
     const [cliente, setCliente] = useState<Cliente>({"nome": "", "email": "", "cpf": ""})
 
+    const [listaClientes, setListaclientes] = useState<Cliente[]>([])
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCliente({...cliente, [e.target.name]: e.target.value})
+    }
+
+    const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        setListaclientes([...listaClientes, cliente])
     }
 
     return(
@@ -15,7 +22,7 @@ export default function Etiquetas(){
               sm:px-6 lg:px-8">
             <div className="mx-auto max-w-lg">  
                 <h1 className="text-3xl font-bold text-slate-950 sm:text-4xl">Cadastro</h1>
-                <form className="rounded-2xl border border-slate-200 bg-white 
+                <form onSubmit={handleSubmit} className="rounded-2xl border border-slate-200 bg-white 
                       p-6 shadow-xl shadow-slate-200/60 sm:p-8">
                     <fieldset className="space-y-5">
                         <legend className="mb-6 text-lg font-semibold text-slate-950">
@@ -68,13 +75,16 @@ export default function Etiquetas(){
             </form>
             </div>
             <div className="w-full mt-8 rounded-2xl border border-slate-200 
-               bg-white p-6 shadow-xl shadow-slate-200/60 sm:p-8">
-                <div className="w-xl mt-8 rounded-2xl border border-yellow-400 
-                   bg-yellow-200 p-6 shadow-xl shadow-slate-200/60 sm:p-8">
-                    <p className="font-bold mb-2">Nome: {cliente.nome}</p>
-                    <p className="font-bold mb-2">E-mail: {cliente.email}</p>
-                    <p className="font-bold mb-2">CPF: {cliente.cpf}</p>
-                </div>
+               bg-white p-6 shadow-xl shadow-slate-200/60 sm:p-8 flex gap-2 flex-wrap justify-evenly">
+
+                {listaClientes.map((cli,index)=>(
+                    <div key={index} className="w-3/12 mt-8 rounded-2xl border border-yellow-400 
+                    bg-yellow-200 p-6 shadow-xl shadow-slate-200/60 sm:p-8">
+                        <p className="font-bold mb-2">Nome: {cli.nome}</p>
+                        <p className="font-bold mb-2">E-mail: {cli.email}</p>
+                        <p className="font-bold mb-2">CPF: {cli.cpf}</p>
+                    </div>
+                ))}
             </div>
         </main>
     )
