@@ -105,24 +105,37 @@ export default function EtiquetasHookForm(){
 
                 </fieldset>
                 <fieldset>
-                    <legend>Endereço</legend>
-                    <label>CEP
-                        <input type="text" {...register("cep")} onBlur={buscarCep}/>
+                    <legend className="mb-6 text-lg font-semibold text-slate-950">Endereço</legend>
+                    <label className="block text-sm font-medium text-slate-700">CEP
+                        <input className="mt-2 block w-full rounded-lg border 
+                                border-slate-300 bg-white px-4 py-3 text-slate-900"
+                                type="text" {...register("cep")}
+                                onBlur={buscarCep}/>
                     </label>
-                    <label>Rua
-                        <input type="text" {...register("rua")}/>
+                    <label className="block text-sm font-medium text-slate-700">Rua
+                        <input className="mt-2 block w-full rounded-lg border 
+                                border-slate-300 bg-white px-4 py-3 text-slate-900"
+                                type="text" {...register("rua")}/>
                     </label>
-                    <label>Número
-                        <input type="text" {...register("numero")}/>
+                    <label className="block text-sm font-medium text-slate-700">Número
+                        <input className="mt-2 block w-full rounded-lg border 
+                                border-slate-300 bg-white px-4 py-3 text-slate-900"
+                                type="text" {...register("numero")}/>
                     </label>
-                    <label>Bairro
-                        <input type="text" {...register("bairro")}/>
+                    <label className="block text-sm font-medium text-slate-700">Bairro
+                        <input className="mt-2 block w-full rounded-lg border 
+                                border-slate-300 bg-white px-4 py-3 text-slate-900"
+                                type="text" {...register("bairro")}/>
                     </label>
-                    <label>Cidade
-                        <input type="text" {...register("cidade")}/>
+                    <label className="block text-sm font-medium text-slate-700">Cidade
+                        <input className="mt-2 block w-full rounded-lg border 
+                                border-slate-300 bg-white px-4 py-3 text-slate-900"
+                                type="text" {...register("cidade")}/>
                     </label>
-                    <label>Estado
-                        <input type="text" {...register("estado")}/>
+                    <label className="block text-sm font-medium text-slate-700">Estado
+                        <input className="mt-2 block w-full rounded-lg border 
+                                border-slate-300 bg-white px-4 py-3 text-slate-900"
+                                type="text" {...register("estado")}/>
                     </label>
                     <button
                         className="w-full rounded-lg bg-indigo-600 px-4 py-3 text-sm font-semibold 
