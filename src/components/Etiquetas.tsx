@@ -1,12 +1,20 @@
+import { useState } from "react"
+
+type Cliente = {nome: string, email: string, cpf: string }
+
 export default function Etiquetas(){
+
+    const [cliente, setCliente] = useState<Cliente>({"nome": "", "email": "", "cpf": ""})
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCliente({...cliente, [e.target.name]: e.target.value})
+    }
 
     return(
         <main className="min-h-screen bg-slate-100 px-4 py-12 text-slate-900 
               sm:px-6 lg:px-8">
             <div className="mx-auto max-w-lg">  
-                    <h1 className="text-3xl font-bold text-slate-950 sm:text-4xl">
-                        Cadastro
-                    </h1>
+                <h1 className="text-3xl font-bold text-slate-950 sm:text-4xl">Cadastro</h1>
                 <form className="rounded-2xl border border-slate-200 bg-white 
                       p-6 shadow-xl shadow-slate-200/60 sm:p-8">
                     <fieldset className="space-y-5">
@@ -22,6 +30,7 @@ export default function Etiquetas(){
                                 type="text"
                                 name="nome"
                                 placeholder="Digite seu nome completo"
+                                onChange={handleChange} value={cliente.nome}
                             />
                         </label>
 
@@ -33,6 +42,7 @@ export default function Etiquetas(){
                                 type="email"
                                 name="email"
                                 placeholder="voce@exemplo.com"
+                                onChange={handleChange} value={cliente.email}
                             />
                         </label>
 
@@ -44,6 +54,7 @@ export default function Etiquetas(){
                                 type="text"
                                 name="cpf"
                                 placeholder="000.000.000-00"
+                                onChange={handleChange} value={cliente.cpf}
                             />
                         </label>
 
@@ -60,9 +71,9 @@ export default function Etiquetas(){
                bg-white p-6 shadow-xl shadow-slate-200/60 sm:p-8">
                 <div className="w-xl mt-8 rounded-2xl border border-yellow-400 
                    bg-yellow-200 p-6 shadow-xl shadow-slate-200/60 sm:p-8">
-                    <p className="font-bold mb-2">Nome:</p>
-                    <p className="font-bold mb-2">E-mail:</p>
-                    <p className="font-bold mb-2">CPF:</p>
+                    <p className="font-bold mb-2">Nome: {cliente.nome}</p>
+                    <p className="font-bold mb-2">E-mail: {cliente.email}</p>
+                    <p className="font-bold mb-2">CPF: {cliente.cpf}</p>
                 </div>
             </div>
         </main>
